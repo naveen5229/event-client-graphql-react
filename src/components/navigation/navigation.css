@@ -1,0 +1,23 @@
+.main-navigation{
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 3.5rem;
+    background: rgb(146, 90, 90);
+    padding: 0 1rem;
+    display: flex;
+}
+
+.header_icon h1{
+    margin: 0;
+}
+
+.route-selection{
+    margin: 0;
+}
+
+.route-selection ul {
+    display: flex;
+    list-style: none;
+}
