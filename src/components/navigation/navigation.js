@@ -5,7 +5,7 @@ import './navigation.css';
 const MainNavigation = (props) => {
     return <header className="main-navigation">
         <div className="header_icon">
-            <h1>Navigation Bar</h1>
+            <h1>GraphQL</h1>
         </div>
         <nav className="route-selection">
             <ul>

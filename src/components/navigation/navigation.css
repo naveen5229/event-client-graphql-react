@@ -21,3 +21,17 @@
     display: flex;
     list-style: none;
 }
+
+.route-selection li{
+    margin: 0 1rem;
+}
+
+.route-selection a{
+    text-decoration: none;
+}
+
+.route-selection a:hover,
+.route-selection a:active,
+.route-selection a.active{
+    color: white;
+}

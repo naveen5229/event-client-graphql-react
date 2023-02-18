@@ -1,7 +1,7 @@
 import './App.css';
 import { BrowserRouter, Route, Navigate, Routes } from 'react-router-dom';
 
-import AuthPage from './pages/auth';
+import AuthPage from './pages/auth/auth';
 import EventPage from './pages/events';
 import BookingPage from './pages/bookings';
 import MainNavigation from './components/navigation/navigation';
@@ -12,7 +12,7 @@ function App() {
     <BrowserRouter>
       <React.Fragment>
         <MainNavigation />
-        <main>
+        <main className="main_body">
           <Routes>
             <Route path="/" element={<Navigate replace to="/auth" />} />
             <Route path="/auth" element={<AuthPage />} />
