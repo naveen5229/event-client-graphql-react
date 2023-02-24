@@ -1,10 +1,14 @@
 import React, { Component } from "react";
+import AuthContext from "../../context/auth.context";
+import apiService from "../../service/apiService";
 import './auth.css';
 
 class AuthPage extends Component {
     state = {
         isLogin: false
     }
+
+    static contextType = AuthContext;
 
     constructor(prop) {
         super(prop);
@@ -46,33 +50,25 @@ class AuthPage extends Component {
             }
         }
 
-        fetch('http://localhost:5000/graphql', {
-            method: 'POST',
-            body: JSON.stringify(payload),
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        }).then(res => {
-            return res.json();
-        })
-        .then(res => {
-            console.log(res)
-        })
-        .catch(err => console.log(err))
+        apiService({query: payload}).then(res => {
+            if (res.data.login.token) {
+                this.context.login(res.data.login.token, res.data.login.userId, res.data.login.tokenExpiration)
+            };
+        });
     }
 
     render() {
         return <form className="login-form" onSubmit={this.formSubmitHandler}>
-            <div className="form-control">
+            <div>
                 <label htmlFor="email">Email</label>
-                <input type="email" id="email" ref={this.emailEl} />
+                <input className="form-control" type="email" id="email" ref={this.emailEl} />
             </div>
-            <div className="form-control">
+            <div>
                 <label htmlFor="passowrd">Password</label>
-                <input type="password" id="password" ref={this.passwordEl} />
+                <input className="form-control" type="password" id="password" ref={this.passwordEl} />
             </div>
             <div className="form-action">
-                <button type="submit">Login</button>
+                <button type="submit">{this.state.isLogin ? 'Login' : 'Signup'}</button>
                 <button type="button" onClick={this.handleLoginSignup}>Switch to {this.state.isLogin ? 'Signup' : 'Login'}</button>
             </div>
         </form>

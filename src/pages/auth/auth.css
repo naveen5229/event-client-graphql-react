@@ -13,9 +13,13 @@
     display: block;
 }
 
+.form-action{
+    display: flex;
+}
+
 .form-action button{
-    background: rgb(146, 90, 90);
-    border: rgb(146, 90, 90);
+    background: rgb(47, 122, 165);
+    border: rgb(47, 122, 165);
     color: white;
     font-family: inherit;
     padding: 0.5rem 1rem;
